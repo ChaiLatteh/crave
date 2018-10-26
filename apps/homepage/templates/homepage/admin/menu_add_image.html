@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Add Image</title>
+  </head>
+  <body>
+    <form action="/admin/menu/{{this_menu.id}}/add_image_process" method="post">
+      {% csrf_token %}
+      {{form.as_p}}
+      <input type="submit" value="Submit">
+      <a href="/admin">Cancel</a>
+    </form>
+  </body>
+</html>

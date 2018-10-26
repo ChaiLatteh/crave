@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ADMIN PANEL | Crave</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon"> -->
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+    html{
+      height:100%;
+      overflow-y:scroll;
+    }
+    body{
+      height:100%;
+    }
+    a{
+      color:blue;
+    }
+    table, tr, th, td{
+      border-collapse:collapse;
+      border:1px solid black;
+      padding:5px;
+    }
+    th{
+      background-color:silver;
+    }
+    .add_button{
+      padding:5px 10px;
+      margin-bottom:10px;
+    }
+    .section{
+      margin:10px;
+    }
+    </style>
+  </head>
+  <body>
+    {% if messages %}
+      <p>{{messages}}</p>
+    {% endif %}
+
+    <div class="section" id="menu">
+      <h1>MENU</h1>
+      <!-- <a href="/admin/menu/add"><button class="add_button">Add Menu</button></a> -->
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for menu in menu_list %}
+          <tr>
+            <td>{{menu.id}}</td>
+            <td style="width:50%;">
+              {% if menu.image %}
+                <img src="{{menu.image.url}}" style="display:table; width:500px;">
+                <a style="text-align:center;" href="/admin/menu/{{menu.id}}/add_image"><button>Change</button></a>
+              {% else %}
+                <p style="text-align:center;">N/A</p>
+                <a style="text-align:center; display:table; margin:auto;" href="/admin/menu/{{menu.id}}/add_image"><button>Add Image</button></a>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Us | Crave</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon"> -->
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+    *{
+      font-family:"Lato";
+    }
+    html{
+      height:100%;
+      overflow-y:scroll;
+    }
+    body{
+      height:100%;
+    }
+    #formspree{
+      text-align:center;
+      font-size:18px;
+    }
+    #formspree label{
+      display:table;
+      width:100%;
+    }
+    #formspree input{
+      border:none;
+      padding:5px;
+      background-color:#f5f5f5;
+      height:40px;
+      width:100%;
+    }
+    #formspree textarea{
+      border:none;
+      padding:5px;
+      background-color:#f5f5f5;
+      width:100%;
+    }
+    #formspree #submit_button{
+      width:250px;
+      text-align:center;
+      height:initial;
+      display:inline-table;
+      color:white;
+      background-color:rgba(38, 117, 92, 0.6);
+      border:none;
+      border-radius:2.5em;
+      padding:20px 50px;
+    }
+
+    </style>
+  </head>
+  <body>
+    {% include "homepage/navbar.html" %}
+
+    <div class="container-fluid" style="margin-bottom:300px; text-align:center; min-width:600px; max-width:900px; width:50%;">
+      <h1 style="font-weight:bold;">Contact Us</h1>
+      <form id="formspree" action="https://formspree.io/cravegardengrove@gmail.com" method="post">
+        <label style="width:49%; display:inline-table; float:left;"><input type="text" name="name" placeholder="Name" required></label>
+        <label style="width:49%; display:inline-table; float:right;"><input type="email" name="email" placeholder="Email" required></label>
+        <label><textarea name="message" rows="8" cols="60" placeholder="Message" required></textarea></label>
+        <input id="submit_button" type="submit" value="Submit">
+
+      </form>
+    </div>
+
+    {% include "homepage/footer.html" %}
+  </body>
+</html>

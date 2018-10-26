@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Menu | Crave</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon"> -->
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+    *{
+      font-family:"Lato";
+    }
+    html{
+      height:100%;
+      overflow-y:scroll;
+    }
+    body{
+      height:100%;
+    }
+    img{
+      width:100%;
+      margin-bottom:100px;
+    }
+    </style>
+  </head>
+  <body>
+    {% include "homepage/navbar.html" %}
+
+    <div class="container-fluid" style="text-align:center;">
+      <h1 style="font-weight:bold; color:#000d6f; margin-bottom:50px;">Detailed Menu Coming Soon! Here are images of our current menu board for now.</h1>
+
+      <img src="/static/images/menu1.jpg" alt="Menu Slide 1">
+      <hr>
+      <img src="/static/images/menu2.jpg" alt="Menu Slide 2">
+      <hr>
+      <img src="/static/images/menu3.jpg" alt="Menu Slide 3">
+      <hr>
+      <img src="/static/images/menu4.jpg" alt="Menu Slide 4">
+    </div>
+
+
+    <!-- <div class="container-fluid" id="menu" style="width:100%; min-height:500px; background-color:silver;">
+      <h2>Special Drinks</h2>
+      <ol>
+        <li>Strawberry-Banana</li>
+        <li>Strawberry-Banana-Orange</li>
+        <li>Strawberry-Banana-Pineapple</li>
+        <li>Strawberry-Watermelon-Kiwi</li>
+        <li>Strawberry-Mango-Pineapple</li>
+        <li>Mango-Pineapple</li>
+        <li>Mango-Pineapple-Banana</li>
+        <li>Piña Colada (Pineapple-Coconut)</li>
+        <li>Blueberry-Banana-Kiwi</li>
+        <li>Chamango</li>
+        <li>Berry Medley</li>
+      </ol>
+      <ul>
+        <li>Sugarcane</li>
+        <li>Butterfly Pea Tea</li>
+      </ul>
+
+      <h2>Smoothie</h2>
+      <ul>
+        <li>Strawberry</li>
+        <li>Peach</li>
+        <li>Mango</li>
+        <li>Pineapple</li>
+        <li>Coconut</li>
+        <li>Taro</li>
+        <li>Honeydew</li>
+        <li>Mocha</li>
+        <li>Caramel</li>
+        <li>Yogurt</li>
+        <li>Multi-Grain (미숫가루)</li>
+        <li>Red Bean (팥)</li>
+      </ul>
+
+      <h2>Slush</h2>
+      <ul>
+        <li>Strawberry</li>
+        <li>Peach</li>
+        <li>Mango</li>
+        <li>Passion</li>
+        <li>Pomegranate</li>
+        <li>Pineapple</li>
+        <li>Lychee</li>
+        <li>Green Apple</li>
+        <li>Wintermelon</li>
+        <li>Grapefruit</li>
+        <li>Kiwi</li>
+        <li>Taro</li>
+        <li>Honeydew</li>
+      </ul>
+
+      <h2>Milkshake</h2>
+      <ul>
+        <li>Strawberry</li>
+        <li>Vanilla</li>
+        <li>Chocolate</li>
+        <li>Matcha</li>
+        <li>Coffee</li>
+        <li>Oreo</li>
+      </ul>
+
+      <h2>Milk Tea</h2>
+      <ul>
+        <li>Signature</li>
+        <li>Jasmine</li>
+        <li>Taro</li>
+        <li>Thai</li>
+        <li>Eclipse</li>
+        <li>Almond</li>
+        <li>Mocha</li>
+        <li>Hokkaido</li>
+        <li>Okinawa</li>
+      </ul>
+
+      <h2>Jasmine Tea</h2>
+      <ul>
+        <li>Regular</li>
+        <li>Plain (no sugar)</li>
+        <li>Strawberry</li>
+        <li>Kiwi</li>
+        <li>Mango</li>
+        <li>Green Apple</li>
+        <li>Pineapple</li>
+        <li>Peach</li>
+        <li>Lychee</li>
+        <li>Passion</li>
+        <li>Wintermelon</li>
+      </ul>
+
+      <h2>Toppings</h2>
+      <ul>
+        <li>Boba</li>
+        <li>Extra Boba</li>
+        <li>Crystal Boba</li>
+        <li>Egg Pudding</li>
+        <li>Grass Jelly</li>
+        <li>Lychee Coconut</li>
+        <li>Rainbow Jelly</li>
+        <li>Coffee Jelly</li>
+      </ul>
+
+      <h2>Foams</h2>
+      <ul>
+        <li>Tiramisu Foam</li>
+        <li>Cheese Foam</li>
+      </ul>
+
+      <h2>Waffle</h2>
+      <ul>
+        <li>Fruit Waffle</li>
+        <li>Banana-Nutella-Walnut Waffle</li>
+        <li>Red Bean & Walnut Waffle</li>
+        <li>Churro Waffle</li>
+      </ul>
+
+      <h2>Milk Snow</h2>
+      <ul>
+        <li>Fruit Snow</li>
+        <li>Strawberry Snow</li>
+        <li>Mango Snow</li>
+        <li>Oreo Snow</li>
+        <li>Ingeolmi (인절미) Snow</li>
+        <li>Black Sesame Snow</li>
+      </ul>
+
+      <h2>Acai & Pitaya</h2>
+      <ul>
+        <li>Acai Bowl</li>
+        <li>Acai Smoothie</li>
+        <li>Pitaya Bowl</li>
+        <li>Pitaya Smoothie</li>
+      </ul>
+
+
+    </div> -->
+
+    {% include "homepage/footer.html" %}
+  </body>
+</html>
