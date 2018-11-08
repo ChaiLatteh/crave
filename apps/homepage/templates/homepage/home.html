@@ -158,27 +158,78 @@
     <div>
     </div>
     <div id="banner">
-      <img src="/static/images/banner_sign.png">
+      <img class="slides" src="/static/images/banner_sign.png">
+      <img class="slides" src="/static/images/banner_bogo.jpg" style="display:none;">
       <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
       <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
 
     <div id="redirects" class="container-fluid">
       <div style="background-color:skyblue;">
-        <a style="background-image:url('/static/images/banner_sign3.png');" id="menu_redirect" href="/menu"></a>
-        <h3>Check out our menu!</h3>
+        <a style="background-image:url('/static/images/redirect1.png');" id="redirect1" href="/about"></a>
+        <h3>About us!</h3>
       </div>
       <div style="background-color:lightgreen;">
-        <a style="background-image:url('/static/images/banner_sign3.png');" id="menu_redirect" href="/menu"></a>
-        <h3>Check out our instagram!</h3>
+        <a style="background-image:url('/static/images/redirect2.png');" id="redirect2" href="/menu"></a>
+        <h3>Check out our menu!</h3>
       </div>
       <div style="background-color:yellow;">
-        <a style="background-image:url('/static/images/banner_sign3.png');" id="menu_redirect" href="/menu"></a>
-        <h3>About us!</h3>
+        <a style="background-image:url('/static/images/redirect3.png');" id="redirect3" target="_blank" href="https://www.instagram.com/craveboba"></a>
+        <h3>Check out our instagram!</h3>
       </div>
     </div>
 
 
     {% include "homepage/footer.html" %}
+
+
+    <script>
+    var slides = document.getElementsByClassName("slides");
+    var slideIndex = 1;
+    // var myIndex = 0;
+    // carousel();
+
+
+
+    function plusSlides(n){
+      showSlides(slideIndex+=n);
+    }
+    function showSlides(n){
+      if (n>slides.length){
+        slideIndex = 1;
+      }
+      if (n<1){
+        slideIndex=slides.length;
+      }
+      for (var i=0; i<slides.length; i++){
+        slides[i].style.display="none";
+      }
+      slides[slideIndex-1].style.display="inline-table";
+    }
+
+    function automatic_slideshow(n){
+      showSlides(slideIndex+=n);
+    }
+
+    function automatic_slideshow(){
+      setTimeout(plusSlides(slideIndex+=1), 2000);
+    }
+
+
+
+    // function carousel(){
+    //     var i;
+    //     var x = slides;
+    //     for (i = 0; i < x.length; i++) {
+    //        x[i].style.display = "none";
+    //     }
+    //     myIndex++;
+    //     if (myIndex > x.length) {myIndex = 1}
+    //     x[myIndex-1].style.display = "inline-table";
+    //     plusSlides(1);
+    //     setTimeout(carousel, 5000)
+    //   }
+    </script>
+
   </body>
 </html>
