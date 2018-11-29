@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import Textarea
-from models import Menu
+from .models import Menu
 import datetime
 
 menu_categories=[
