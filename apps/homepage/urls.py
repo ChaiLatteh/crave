@@ -9,6 +9,8 @@ urlpatterns = [
     url(r'^contact_us$', views.contact_us),
     url(r'^careers$', views.careers),
 
+    url(r'^closing_soon$', views.closing_soon),
+
     url(r'^login$', views.login),
     url(r'^login_process$', views.login_process),
     url(r'^logout$', views.logout),

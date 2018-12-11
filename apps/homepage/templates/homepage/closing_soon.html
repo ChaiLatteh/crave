@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CLOSING SOON!</title>
+  </head>
+  <body>
+    <h1 style="font-size:140px;">Hello, we close at <span style="color:#480000;">10:00PM</span>.
+    <br>It is <span id="time" style="color:#480000;"></span> right now.</h1>
+    <br>
+    <h1 id="closing_time_past" style="font-size:140px; color:red; display:none;">IT'S PAST THE CLOSING TIME!!</h1>
+    <script>
+      var timeElement = document.getElementById("time");
+      var hiddenMessage = document.getElementById("closing_time_past");
+      var today = new Date();
+      var time;
+      var hours;
+      var minutes;
+      var seconds;
+      setInterval(function(){
+        today = new Date();
+        if (today.getHours()>12){
+          hours = today.getHours()-12;
+        }
+        else{
+          hours = today.getHours();
+        }
+
+        if (today.getMinutes()<10){
+          minutes = "0"+today.getMinutes();
+        }
+        else{
+          minutes = today.getMinutes();
+        }
+
+        if (today.getSeconds()<10){
+          seconds = "0"+today.getSeconds();
+        }
+        else{
+          seconds = today.getSeconds();
+        }
+
+        time = hours + ":" + minutes + ":" + seconds;
+
+        timeElement.innerHTML = time+"PM";
+        if (today.getHours() >= 22){
+          hiddenMessage.style.display="block";
+        }
+      }, 1000);
+    </script>
+  </body>
+
+</html>

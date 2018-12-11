@@ -59,6 +59,9 @@ def admin(request):
 
     return render(request, 'homepage/admin/admin.html', data)
 
+def closing_soon(request):
+    return render(request, 'homepage/closing_soon.html')
+
 def menu_add_image(request, menu_id):
     if 'username' not in request.session:
         return redirect('/login')
@@ -91,6 +94,7 @@ def menu_add_image_process(request, menu_id):
     else:
         messages.add_message(request, messages.ERROR, "Something went wrong. Image has not been updated.")
         return redirect('/admin/menu/'+menu_id+'/add_image')
+
 # def menu_add(request):
 #     if 'username' not in request.session:
 #         return redirect('/login')
