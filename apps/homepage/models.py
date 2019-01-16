@@ -71,7 +71,7 @@ class Admin(models.Model):
         return self.username
 
 class Menu(models.Model):
-    # item_name=models.CharField(max_length=255)
+    item_name=models.CharField(max_length=255)
     # item_price=models.CharField(max_length=255)
     # item_category=models.CharField(max_length=255)
     # item_description=models.CharField(max_length=255)

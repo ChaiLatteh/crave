@@ -47,7 +47,9 @@
   </head>
   <body>
     {% if messages %}
-      <p>{{messages}}</p>
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
     {% endif %}
 
     <div class="section" id="menu">

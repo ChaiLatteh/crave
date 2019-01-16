@@ -5,7 +5,14 @@
     <title>Add Image</title>
   </head>
   <body>
-    <form action="/admin/menu/{{this_menu.id}}/add_image_process" method="post">
+
+    {% if messages %}
+      {% for message in messages %}
+        <p style="color:red;">{{message}}</p>
+      {% endfor %}
+    {% endif %}
+
+    <form action="/admin/menu/{{this_menu.id}}/add_image_process" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{form.as_p}}
       <input type="submit" value="Submit">

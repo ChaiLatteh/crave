@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
-from datetime import datetime, date
+import datetime, requests
 
 from .models import Admin, Menu
 from .forms import MenuForm, MenuImageForm
@@ -93,7 +93,8 @@ def menu_add_image_process(request, menu_id):
 
     else:
         messages.add_message(request, messages.ERROR, "Something went wrong. Image has not been updated.")
-        return redirect('/admin/menu/'+menu_id+'/add_image')
+        # return redirect('/admin/menu/'+menu_id+'/add_image')
+        return redirect('/')
 
 # def menu_add(request):
 #     if 'username' not in request.session:
