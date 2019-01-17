@@ -52,27 +52,38 @@
       {% endfor %}
     {% endif %}
 
+    <div style="margin:10px;">
+      <a style="margin-right:20px;" href="/">Home</a>
+      <a href="/logout">Logout</a>
+    </div>
+
     <div class="section" id="menu">
       <h1>MENU</h1>
-      <!-- <a href="/admin/menu/add"><button class="add_button">Add Menu</button></a> -->
+      <a href="/admin/menu/add"><button class="add_button">Add Item</button></a>
       <table>
         <thead>
           <tr>
-            <th>ID</th>
+            <th>Category</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
             <th>Image</th>
           </tr>
         </thead>
         <tbody>
-          {% for menu in menu_list %}
+          {% for item in menu_item_list %}
           <tr>
-            <td>{{menu.id}}</td>
-            <td style="width:50%;">
-              {% if menu.image %}
-                <img src="{{menu.image.url}}" style="display:table; width:500px;">
-                <a style="text-align:center;" href="/admin/menu/{{menu.id}}/add_image"><button>Change</button></a>
+            <td>{{item.category}}</td>
+            <td>{{item.name}}</td>
+            <td>${{item.price}}</td>
+            <td>{{item.description}}</td>
+            <td style="text-align:center;">
+              {% if item.image %}
+                <img src="{{item.image.url}}" style="display:table; width:500px;">
+                <a href="/admin/menu/{{item.id}}/add_image"><button>Change</button></a>
               {% else %}
-                <p style="text-align:center;">N/A</p>
-                <a style="text-align:center; display:table; margin:auto;" href="/admin/menu/{{menu.id}}/add_image"><button>Add Image</button></a>
+                <p>N/A</p>
+                <a href="/admin/menu/{{item.id}}/add_image"><button>Add Image</button></a>
               {% endif %}
             </td>
           </tr>

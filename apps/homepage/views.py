@@ -7,8 +7,8 @@ from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
 import datetime, requests
 
-from .models import Admin, Menu
-from .forms import MenuForm, MenuImageForm
+from .models import Admin, MenuItem
+from .forms import MenuItemForm, MenuImageForm
 
 # Create your views here.
 def home(request):
@@ -16,6 +16,14 @@ def home(request):
 
 def menu(request):
     return render(request, 'homepage/menu.html')
+
+def menu_test(request):
+
+    data = {
+    "menu_item_list" : MenuItem.objects.all(),
+    }
+
+    return render(request, 'homepage/menu_test.html', data)
 
 def about_us(request):
     return render(request, 'homepage/about_us.html')
@@ -54,7 +62,7 @@ def admin(request):
         return redirect('/login')
 
     data={
-    "menu_list":Menu.objects.all(),
+    "menu_item_list":MenuItem.objects.all(),
     }
 
     return render(request, 'homepage/admin/admin.html', data)
@@ -69,7 +77,7 @@ def menu_add_image(request, menu_id):
     form = MenuImageForm()
     data={
     "form":form,
-    "this_menu":Menu.objects.get(id=menu_id),
+    "this_menu":MenuItem.objects.get(id=menu_id),
     }
     return render(request, 'homepage/admin/menu_add_image.html', data)
 
@@ -77,7 +85,7 @@ def menu_add_image_process(request, menu_id):
     if 'username' not in request.session:
         return redirect('/login')
 
-    this_menu = Menu.objects.get(id=menu_id)
+    this_menu = MenuItem.objects.get(id=menu_id)
 
     if request.POST:
         form = MenuImageForm(request.POST, request.FILES, instance=this_menu)
@@ -96,38 +104,38 @@ def menu_add_image_process(request, menu_id):
         # return redirect('/admin/menu/'+menu_id+'/add_image')
         return redirect('/')
 
-# def menu_add(request):
-#     if 'username' not in request.session:
-#         return redirect('/login')
-#
-#     data={
-#     "form":MenuForm(),
-#     }
-#     return render(request, 'homepage/admin/menu_add.html', data)
-#
-# def menu_add_process(request):
-#     if 'username' not in request.session:
-#         return redirect('/')
-#
-#     if request.POST:
-#         form = MenuForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             new_item = form.save(commit=False)
-#
-#             new_item.save()
-#             messages.add_message(request, messages.SUCCESS, "Item has been added.")
-#             return redirect('/admin/menu/add')
-#         else:
-#             form = MenuForm()
-#             messages.add_message(request, messages.ERROR, "Please complete all required fields.")
-#             return redirect('/admin/menu/add')
-#     else:
-#         messages.add_message(request, messages.ERROR, "Something went wrong. Item has NOT been added.")
-#     return redirect('/admin/menu/add')
-#
+def menu_add(request):
+    if 'username' not in request.session:
+        return redirect('/login')
+
+    data={
+    "form":MenuItemForm(),
+    }
+    return render(request, 'homepage/admin/menu_add.html', data)
+
+def menu_add_process(request):
+    if 'username' not in request.session:
+        return redirect('/')
+
+    if request.POST:
+        form = MenuItemForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_item = form.save(commit=False)
+
+            new_item.save()
+            messages.add_message(request, messages.SUCCESS, "Item has been added.")
+            return redirect('/admin/menu/add')
+        else:
+            form = MenuItemForm()
+            messages.add_message(request, messages.ERROR, "Please complete all required fields.")
+            return redirect('/admin/menu/add')
+    else:
+        messages.add_message(request, messages.ERROR, "Something went wrong. Item has NOT been added.")
+    return redirect('/admin/menu/add')
+
 # def menu_modify(request, menu_id):
 #     data={
-#     "this_item":Menu.objects.get(id=menu_id),
+#     "this_item":MenuItem.objects.get(id=menu_id),
 #     }
 #     return render(request, 'homepage/admin/menu_modify.html', data)
 #
@@ -135,7 +143,7 @@ def menu_add_image_process(request, menu_id):
 #     if 'username' not in request.session:
 #         return redirect('/')
 #
-#     this_item=Menu.objects.get(id=menu_id)
+#     this_item=MenuItem.objects.get(id=menu_id)
 #
 #     data={
 #     'this_item':this_item,
@@ -144,7 +152,7 @@ def menu_add_image_process(request, menu_id):
 #     'item_category':request.POST['item_category'],
 #     }
 #
-#     item = Menu.objects.modify(data)
+#     item = MenuItem.objects.modify(data)
 #
 #     if item['errors_list']:
 #         for error in item['errors_list']:

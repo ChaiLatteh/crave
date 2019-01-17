@@ -30,33 +30,33 @@ class AdminManager(models.Manager):
         'errors_list':None,
         }
 
-# class MenuManager(models.Manager):
-    # def modify(self, data):
-    #     errors=[]
-    #     this_item=data['this_item']
-    #
-    #     if data['item_name']=="":
-    #         errors.append("Please enter item name.")
-    #     if data['item_price']=="":
-    #         errors.append("Please enter item price.")
-    #     if data['item_category']=="":
-    #         errors.append("Please enter item category.")
-    #
-    #     if len(errors)>0:
-    #         return{
-    #         'item':None,
-    #         'errors_list':errors,
-    #         }
-    #     else:
-    #         this_item.item_name=data['item_name']
-    #         this_item.item_price=data['item_price']
-    #         this_item.item_category=data['item_category']
-    #         this_item.save()
-    #
-    #         return{
-    #         'item':this_item,
-    #         'errors_list':None,
-    #         }
+class MenuItemManager(models.Manager):
+    def modify(self, data):
+        errors=[]
+        this_item=data['this_item']
+
+        if data['name']=="":
+            errors.append("Please enter item name.")
+        if data['price']=="":
+            errors.append("Please enter item price.")
+        if data['category']=="":
+            errors.append("Please enter item category.")
+
+        if len(errors)>0:
+            return{
+            'item':None,
+            'errors_list':errors,
+            }
+        else:
+            this_item.name=data['name']
+            this_item.price=data['price']
+            this_item.category=data['category']
+            this_item.save()
+
+            return{
+            'item':this_item,
+            'errors_list':None,
+            }
 
 
 
@@ -70,12 +70,15 @@ class Admin(models.Model):
     def __str__(self):
         return self.username
 
-class Menu(models.Model):
-    item_name=models.CharField(max_length=255)
-    # item_price=models.CharField(max_length=255)
-    # item_category=models.CharField(max_length=255)
-    # item_description=models.CharField(max_length=255)
-    image=models.ImageField(upload_to="menu_picture", null=True, blank=False)
+class MenuItem(models.Model):
+    name=models.CharField(max_length=255)
+    price=models.CharField(max_length=255)
+    category=models.CharField(max_length=255)
+    description=models.CharField(max_length=255)
+    image=models.ImageField(upload_to="menu_item_image", null=True, blank=False)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
-    # objects=MenuManager()
+    objects=MenuItemManager()
+
+    def __str__(self):
+        return self.name

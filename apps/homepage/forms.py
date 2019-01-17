@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import Textarea
-from .models import Menu
+from .models import MenuItem
 import datetime
 
 menu_categories=[
@@ -21,31 +21,33 @@ menu_categories=[
 ('hot_tea', 'Hot Tea'),
 ('icecream', 'Ice Cream'),
 ('icecream_cone', 'Ice Cream Cone'),
+('taiyaki', 'Taiyaki'),
 
 
 ]
 
-class MenuForm(forms.ModelForm):
+class MenuItemForm(forms.ModelForm):
 
-    item_name=forms.CharField(label="Item Name *")
-    # item_description=forms.CharField(label="Item Description *")
-    item_price=forms.CharField(label="Item Price *")
-    item_category=forms.ChoiceField(label="Item Category *", widget=forms.Select, choices=(menu_categories))
+    name=forms.CharField(label="Item Name *")
+    description=forms.CharField(label="Item Description *")
+    price=forms.CharField(label="Item Price *")
+    category=forms.ChoiceField(label="Item Category *", widget=forms.Select, choices=(menu_categories))
 
 
     # image=forms.ImageField(required=False)
 
     class Meta:
-        model = Menu
+        model = MenuItem
         fields = [
-        "item_name",
-        "item_price",
-        "item_category",
+        "name",
+        "price",
+        "description",
+        "category",
         ]
 
 class MenuImageForm(forms.ModelForm):
     class Meta:
-        model = Menu
+        model = MenuItem
         fields = [
         "image",
         ]
