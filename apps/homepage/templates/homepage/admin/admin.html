@@ -48,7 +48,7 @@
   <body>
     {% if messages %}
       {% for message in messages %}
-        <p>{{message}}</p>
+        <p style="color:red;">{{message}}</p>
       {% endfor %}
     {% endif %}
 
@@ -79,17 +79,34 @@
             <td>{{item.description}}</td>
             <td style="text-align:center;">
               {% if item.image %}
-                <img src="{{item.image.url}}" style="display:table; width:500px;">
+                <img src="{{item.image.url}}" style="display:table; max-height:200px; margin-bottom:10px;">
                 <a href="/admin/menu/{{item.id}}/add_image"><button>Change</button></a>
               {% else %}
                 <p>N/A</p>
                 <a href="/admin/menu/{{item.id}}/add_image"><button>Add Image</button></a>
               {% endif %}
             </td>
+            <td><a href="/admin/menu/{{item.id}}/modify"><button>Modify</button></a></td>
+            <td><a class="delete" href="/admin/menu/{{item.id}}/delete_process"><button>Delete</button></a></td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
+
+
+    <script>
+    var delete_button = document.getElementsByClassName("delete");
+    for (var i=0; i<delete_button.length; i++){
+      delete_button[i].onclick = function(){
+        delete_confirm = confirm("Are you sure??");
+        if (delete_confirm == false){
+          return false;
+        }
+      }
+    }
+    </script>
+
+
   </body>
 </html>

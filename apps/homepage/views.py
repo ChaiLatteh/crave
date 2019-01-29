@@ -19,8 +19,76 @@ def menu(request):
 
 def menu_test(request):
 
+    all_item_list=[]
+    smoothie_list=[]
+    special_smoothie_list=[]
+    special_drink_list=[]
+    slush_list=[]
+    milk_tea_list=[]
+    jasmine_tea_list=[]
+    frappe_list=[]
+    milkshake_list=[]
+    waffle_list=[]
+    milk_snow_list=[]
+    acai_pitaya_list=[]
+    cafe_list=[]
+    hot_tea_list=[]
+    ice_cream_list=[]
+    taiyaki_list=[]
+
+    for item in MenuItem.objects.all():
+        all_item_list.append(item)
+
+        if item.category=="smoothie":
+            smoothie_list.append(item)
+        if item.category=="special_smoothie":
+            special_smoothie_list.append(item)
+        if item.category=="special_drink":
+            special_drink_list.append(item)
+        if item.category=="slush":
+            slush_list.append(item)
+        if item.category=="milk_tea":
+            milk_tea_list.append(item)
+        if item.category=="jasmine_tea":
+            jasmine_tea_list.append(item)
+        if item.category=="frappe":
+            frappe_list.append(item)
+        if item.category=="milkshake":
+            milkshake_list.append(item)
+        if item.category=="waffle":
+            waffle_list.append(item)
+        if item.category=="milk_snow":
+            milk_snow_list.append(item)
+        if item.category=="acai_pitaya":
+            acai_pitaya_list.append(item)
+        if item.category=="cafe":
+            cafe_list.append(item)
+        if item.category=="hot_tea":
+            hot_tea_list.append(item)
+        if item.category=="ice_cream":
+            ice_cream_list.append(item)
+        if item.category=="taiyaki":
+            taiyaki_list.append(item)
+
     data = {
-    "menu_item_list" : MenuItem.objects.all(),
+    "all_item_list": all_item_list,
+
+    "smoothie_list": smoothie_list,
+    "special_smoothie_list": special_smoothie_list,
+    "special_drink_list": special_drink_list,
+    "slush_list": slush_list,
+    "milk_tea_list": milk_tea_list,
+    "jasmine_tea_list": jasmine_tea_list,
+    "frappe_list": frappe_list,
+    "mlikshake_list": milkshake_list,
+    "waffle_list": waffle_list,
+    "mlik_snow_list": milk_snow_list,
+    "acai_pitaya_list": acai_pitaya_list,
+    "cafe_list": cafe_list,
+    "hot_tea_list": hot_tea_list,
+    "ice_cream_list": ice_cream_list,
+    "taiyaki_list": taiyaki_list,
+
     }
 
     return render(request, 'homepage/menu_test.html', data)
@@ -70,22 +138,22 @@ def admin(request):
 def closing_soon(request):
     return render(request, 'homepage/closing_soon.html')
 
-def menu_add_image(request, menu_id):
+def menu_add_image(request, item_id):
     if 'username' not in request.session:
         return redirect('/login')
 
     form = MenuImageForm()
     data={
     "form":form,
-    "this_menu":MenuItem.objects.get(id=menu_id),
+    "this_menu":MenuItem.objects.get(id=item_id),
     }
     return render(request, 'homepage/admin/menu_add_image.html', data)
 
-def menu_add_image_process(request, menu_id):
+def menu_add_image_process(request, item_id):
     if 'username' not in request.session:
         return redirect('/login')
 
-    this_menu = MenuItem.objects.get(id=menu_id)
+    this_menu = MenuItem.objects.get(id=item_id)
 
     if request.POST:
         form = MenuImageForm(request.POST, request.FILES, instance=this_menu)
@@ -97,11 +165,11 @@ def menu_add_image_process(request, menu_id):
         else:
             form = MenuImageForm()
             messages.add_message(request, messages.ERROR, "Please select an image.")
-            return redirect('/admin/menu/'+menu_id+'/add_image')
+            return redirect('/admin/menu/'+item_id+'/add_image')
 
     else:
         messages.add_message(request, messages.ERROR, "Something went wrong. Image has not been updated.")
-        # return redirect('/admin/menu/'+menu_id+'/add_image')
+        # return redirect('/admin/menu/'+item_id+'/add_image')
         return redirect('/')
 
 def menu_add(request):
@@ -133,35 +201,42 @@ def menu_add_process(request):
         messages.add_message(request, messages.ERROR, "Something went wrong. Item has NOT been added.")
     return redirect('/admin/menu/add')
 
-# def menu_modify(request, menu_id):
-#     data={
-#     "this_item":MenuItem.objects.get(id=menu_id),
-#     }
-#     return render(request, 'homepage/admin/menu_modify.html', data)
-#
-# def menu_modify_process(request, menu_id):
-#     if 'username' not in request.session:
-#         return redirect('/')
-#
-#     this_item=MenuItem.objects.get(id=menu_id)
-#
-#     data={
-#     'this_item':this_item,
-#     'item_name':request.POST['item_name'],
-#     'item_price':request.POST['item_price'],
-#     'item_category':request.POST['item_category'],
-#     }
-#
-#     item = MenuItem.objects.modify(data)
-#
-#     if item['errors_list']:
-#         for error in item['errors_list']:
-#             messages.add_message(request, messages.ERROR, error)
-#             return redirect('/admin/menu/'+menu_id+'/modify')
-#     else:
-#         messages.add_message(request, messages.SUCCESS, "Item has been modified.")
-#         return redirect('/admin')
-#
-#
-# def menu_delete_process(request, menu_id):
-#     pass
+def menu_modify(request, item_id):
+    data={
+    "this_item":MenuItem.objects.get(id=item_id),
+    }
+    return render(request, 'homepage/admin/menu_modify.html', data)
+
+def menu_modify_process(request, item_id):
+    if 'username' not in request.session:
+        return redirect('/')
+
+    this_item=MenuItem.objects.get(id=item_id)
+
+    data={
+    'this_item':this_item,
+    'category':request.POST['item_category'],
+    'name':request.POST['item_name'],
+    'price':request.POST['item_price'],
+    'description':request.POST['item_description'],
+    }
+
+    item = MenuItem.objects.modify(data)
+
+    if item['errors_list']:
+        for error in item['errors_list']:
+            messages.add_message(request, messages.ERROR, error)
+            return redirect('/admin/menu/'+item_id+'/modify')
+    else:
+        messages.add_message(request, messages.SUCCESS, "Item has been modified.")
+        return redirect('/admin')
+
+
+def menu_delete_process(request, item_id):
+    if 'username' not in request.session:
+        return redirect('/')
+
+    this_item = MenuItem.objects.get(id=item_id)
+    this_item.delete()
+    messages.add_message(request, messages.SUCCESS, "Item has been deleted.")
+    return redirect('/admin')

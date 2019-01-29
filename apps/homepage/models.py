@@ -35,12 +35,12 @@ class MenuItemManager(models.Manager):
         errors=[]
         this_item=data['this_item']
 
+        if data['category']=="":
+            errors.append("Please enter item category.")
         if data['name']=="":
             errors.append("Please enter item name.")
         if data['price']=="":
             errors.append("Please enter item price.")
-        if data['category']=="":
-            errors.append("Please enter item category.")
 
         if len(errors)>0:
             return{
@@ -48,9 +48,10 @@ class MenuItemManager(models.Manager):
             'errors_list':errors,
             }
         else:
+            this_item.category=data['category']
             this_item.name=data['name']
             this_item.price=data['price']
-            this_item.category=data['category']
+            this_item.description=data['description']
             this_item.save()
 
             return{
