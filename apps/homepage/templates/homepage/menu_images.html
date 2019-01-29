@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Menu | Crave</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+    *{
+      font-family:"Lato";
+    }
+    html{
+      height:100%;
+      overflow-y:scroll;
+    }
+    body{
+      height:100%;
+    }
+    img{
+      width:100%;
+      margin-bottom:100px;
+    }
+    </style>
+  </head>
+  <body>
+    {% include "homepage/navbar.html" %}
+
+    <div class="container-fluid" style="text-align:center;">
+      <h3 style="font-weight:bold; color:darkred;">Menu as of 1/28/2019</h3>
+
+      <img src="/static/images/menu1.jpg" alt="Menu Slide 1">
+      <hr>
+      <img src="/static/images/menu2.jpg" alt="Menu Slide 2">
+      <hr>
+      <img src="/static/images/menu3.jpg" alt="Menu Slide 3">
+      <hr>
+      <img src="/static/images/menu4.jpg" alt="Menu Slide 4">
+    </div>
+
+
+
+
+    {% include "homepage/footer.html" %}
+  </body>
+</html>

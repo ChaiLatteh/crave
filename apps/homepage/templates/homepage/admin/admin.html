@@ -76,7 +76,7 @@
             <td>{{item.category}}</td>
             <td>{{item.name}}</td>
             <td>${{item.price}}</td>
-            <td>{{item.description}}</td>
+            <td>{{item.description|safe}}</td>
             <td style="text-align:center;">
               {% if item.image %}
                 <img src="{{item.image.url}}" style="display:table; max-height:200px; margin-bottom:10px;">

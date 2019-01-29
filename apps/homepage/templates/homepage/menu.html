@@ -29,168 +29,940 @@
     body{
       height:100%;
     }
-    img{
-      width:100%;
-      margin-bottom:100px;
+    #header{
+      height:150px;
+      background-color:grey;
     }
+    #header h1{
+      font-weight:bold;
+      font-size:48px;
+      text-align:center;
+    }
+
+    #back_to_top{
+      opacity:0.7;
+      color:#4a6885;
+      border:1.5px solid #4a6885;
+      display:none;
+      position:fixed;
+      bottom:10px;
+      right:10px;
+      text-align:center;
+      padding-bottom:5px;
+    }
+    #back_to_top:hover{
+      text-decoration:none;
+      opacity:1;
+    }
+    #back_to_top span{
+      padding:0px 10px;
+      display:table;
+      font-size:20px;
+      margin:auto;
+    }
+
+    #anchor{
+      margin-top:50px;
+      margin-bottom:50px;
+      display:block;
+      text-align:center;
+    }
+    #anchor span, #anchor a{
+      margin:20px 10px 0px 10px;
+      padding-bottom:5px;
+      width:fit-content;
+      display:inline-block;
+      font-size:16px;
+      text-decoration:none !important;
+    }
+
+    #anchor a{
+      transition:0.2s;
+      border-bottom:2px solid transparent;
+    }
+
+    #anchor a:hover{
+      transition:0.2s;
+      border-bottom:2px solid #23527c;
+    }
+
+    #additional_info{
+      width:960px;
+      margin:20px auto auto auto;
+      padding:0px;
+    }
+
+    #additional_info span{
+      font-size:18px;
+      text-align:left;
+      font-weight:bold;
+      color:darkblue;
+    }
+
+    #additional_info a{
+      font-size:18px;
+      float:right;
+      font-weight:bold;
+      color:#390063;
+    }
+
+    #menu{
+      margin:auto;
+      padding:0px 0px 50px 0px;
+      width:960px;
+    }
+
+    .category{
+      outline:none;
+      margin:20px 0px;
+    }
+
+    .category h1{
+      font-size:30px;
+      color:darkred;
+      font-weight:bold;
+      padding-bottom:20px;
+    }
+
+    .item{
+      cursor:pointer;
+      height:85px;
+      width:45%;
+      padding:10px;
+      margin-bottom:30px;
+      display:inline-table;
+    }
+    .item:hover{
+      box-shadow:0px 0px 6px 0px rgba(0,0,0,.25);
+    }
+    #menu>div>div:nth-child(4n+4){
+      float:right;
+    }
+    .item_name{
+      font-weight:bold;
+      max-width:85%;
+      margin:0px 0px 10px 0px;
+      display:inline-table;
+      font-size:24px;
+    }
+    .item_price{
+      font-weight:bold;
+      color:#d61212;
+      float:right;
+      display:inline-table;
+      font-size:20px;
+    }
+    .item_description{
+      margin:0px;
+      font-size:16px;
+    }
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 100; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    .modal-content{
+      overflow-y:auto;
+      width:80%;
+      max-width:1150px;
+      /* min-height:fit-content; */
+      height:60%;
+      max-height:766px;
+      background-color: #fefefe;
+      margin: auto;
+      border:none;
+      border-radius:0;
+    }
+
+
+    .close {
+      font-weight:100;
+      text-shadow:0px 0px 3px black;
+      opacity:0.9;
+      color: white;
+      position:absolute;
+      right:0px;
+      font-size: 38px;
+      margin-right:10px;
+    }
+
+    .close:hover, .close:focus {
+      opacity:1;
+      color:white;
+      text-shadow:0px 0px 4px black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    #modal_image{
+      padding:10px;
+      display:inline-table;
+      box-sizing:border-box;
+      width:35%;
+      height:100%;
+      float:left;
+      text-align:center;
+    }
+
+    #modal_image img{
+      width:100%;
+      max-width:300px;
+    }
+
+    #modal_info{
+      display:inline-table;
+      box-sizing:border-box;
+      width:65%;
+      height:100%;
+      padding:25px;
+      text-align:left;
+      vertical-align:top;
+    }
+
+    #modal_info h3, #modal_info h5{
+      display:table;
+    }
+    #modal_info h3{
+      font-weight:bold;
+      font-size:28px;
+      margin:20px 0px 5px 0px;
+    }
+    #modal_info h5{
+      font-size:18px;
+      line-height:23px;
+      margin:25px 0px;
+    }
+
+
+
+    @media screen and (max-width:1023px){
+      #additional_info{
+        width:80%;
+      }
+
+      #additional_info span{
+        font-size:16px;
+      }
+
+      #additional_info a{
+        font-size:16px;
+      }
+
+      #menu{
+        width:80%;
+        min-width:600px;
+      }
+      .item{
+        height:initial;
+        width:100%;
+      }
+
+      #menu>div:nth-child(4n+4){
+        float:initial;
+      }
+
+      .modal-content{
+        height:initial;
+        max-height:80%;
+      }
+
+      #modal_image{
+        display:table;
+        width:100%;
+        height:70%;
+      }
+      #modal_info{
+        display:table;
+        width:100%;
+        height:initial;
+        padding:0px 20px;
+      }
+
+
+
+
+
+    }
+    @media screen and (max-width:767px){
+      #additional_info span, #additional_info a{
+        display:table;
+        float:initial;
+      }
+      #additional_info a{
+        margin-bottom:50px;
+      }
+      #menu{
+        min-width:0;
+      }
+      .modal-content{
+        width:80%;
+      }
+      #modal_info h3{
+        font-size:18px;
+      }
+      #modal_info h5{
+        font-size:14px;
+      }
+    }
+
+    @media screen and (max-width:574px){
+      .item_name{
+        max-width:78%;
+        font-size:20px;
+      }
+      .item_price{
+        font-size:16px;
+      }
+      .item_description{
+        font-size:12px;
+      }
+    }
+
+    @media screen and (max-width:375px){
+      #modal_image{
+        padding:0;
+      }
+    }
+
+
     </style>
   </head>
   <body>
     {% include "homepage/navbar.html" %}
 
-    <div class="container-fluid" style="text-align:center;">
-      <h1 style="font-weight:bold; color:#000d6f; margin-bottom:50px;">Detailed Menu In Progress. For now, here are the images of our current menu.</h1>
-      <h3 style="font-weight:bold; color:darkred;">Menu as of 1/16/2019</h3>
+    <div id="header" class="container-fluid">
+      <div style="display:table; height:100%; margin:auto;">
+        <div style="display:table-cell; vertical-align:middle;">
+          <h1>CRAVE MENU</h1>
+        </div>
+      </div>
+    </div>
 
-      <img src="/static/images/menu1.jpg" alt="Menu Slide 1">
-      <hr>
-      <img src="/static/images/menu2.jpg" alt="Menu Slide 2">
-      <hr>
-      <img src="/static/images/menu3.jpg" alt="Menu Slide 3">
-      <hr>
-      <img src="/static/images/menu4.jpg" alt="Menu Slide 4">
-      <hr>
-      <img src="/static/images/menu5.jpg" alt="Menu Slide 5">
+    <div id="top" style="display:none;"></div>
+    <a id="back_to_top" href="#top"><span><i class="fa fa-chevron-up"></i></span>TOP</a>
+    <div id="anchor">
+      <span>Jump to:</span>
+      <a href="#smoothie">Drinks</a>
+      <a href="#waffle">Desserts</a>
+      <a href="#acai_pitaya">Acai & Pitaya</a>
+      <a href="#cafe">Café</a>
+      <a href="#taiyaki">Taiyaki</a>
+      <a href="#ice_cream">Ice Cream</a>
+
+    </div>
+
+    <div class="container-fluid" id="additional_info">
+      <a id="menu_images" href="/menu_images" target="_blank">Want to see our menuboard instead? Click here!</a>
+      <span>Click on an item for more details!</span>
+    </div>
+    <div id="menu" class="container-fluid">
+      <div class="category" id="smoothie">
+        <h1>Smoothies</h1>
+        {% for item in smoothie_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            <span class="item_price">${{item.price}}</span>
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="special_smoothie">
+        <h1>Special Smoothie</h1>
+        {% for item in special_smoothie_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            <span class="item_price">${{item.price}}</span>
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+
+      <div class="category" id="slush">
+        <h1>Slush</h1>
+        {% for item in slush_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            <span class="item_price">${{item.price}}</span>
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="milk_tea">
+        <h1>Milk Tea</h1>
+        {% for item in milk_tea_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            <span class="item_price">${{item.price}}</span>
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="jasmine_tea">
+        <h1>Jasmine Green Tea</h1>
+        {% for item in jasmine_tea_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            <span class="item_price">${{item.price}}</span>
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="special_drink">
+        <h1>Special Tea</h1>
+        {% for item in special_drink_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            <span class="item_price">${{item.price}}</span>
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+
+      <div class="category" id="frappe">
+        <h1>Frappe</h1>
+        {% for item in frappe_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            <span class="item_price">${{item.price}}</span>
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="milkshake">
+        <h1>Milk Shake</h1>
+        {% for item in milkshake_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            <span class="item_price">${{item.price}}</span>
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="waffle">
+        <h1>Waffle</h1>
+        {% for item in waffle_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            <span class="item_price">${{item.price}}</span>
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="milk_snow">
+        <h1>Milk Snow</h1>
+        {% for item in milk_snow_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            <span class="item_price">${{item.price}}</span>
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="acai_pitaya">
+        <h1>Acai & Pitaya</h1>
+        {% for item in acai_pitaya_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            <span class="item_price">${{item.price}}</span>
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="cafe">
+        <h1>Café</h1>
+        {% for item in cafe_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            <span class="item_price">${{item.price}}</span>
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="hot_tea">
+        <h1>Hot Tea</h1>
+        {% for item in hot_tea_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            <span class="item_price">${{item.price}}</span>
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="taiyaki">
+        <h1>Taiyaki</h1>
+        {% for item in taiyaki_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            <span class="item_price">${{item.price}}</span>
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="ice_cream">
+        <h1>Ice Cream</h1>
+        {% for item in ice_cream_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            <span class="item_price">${{item.price}}</span>
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+
     </div>
 
 
-    <!-- <div class="container-fluid" id="menu" style="width:100%; min-height:500px; background-color:silver;">
-      <h2>Special Drinks</h2>
-      <ol>
-        <li>Strawberry-Banana</li>
-        <li>Strawberry-Banana-Orange</li>
-        <li>Strawberry-Banana-Pineapple</li>
-        <li>Strawberry-Watermelon-Kiwi</li>
-        <li>Strawberry-Mango-Pineapple</li>
-        <li>Mango-Pineapple</li>
-        <li>Mango-Pineapple-Banana</li>
-        <li>Piña Colada (Pineapple-Coconut)</li>
-        <li>Blueberry-Banana-Kiwi</li>
-        <li>Chamango</li>
-        <li>Berry Medley</li>
-      </ol>
-      <ul>
-        <li>Sugarcane</li>
-        <li>Butterfly Pea Tea</li>
-      </ul>
+    <script>
+    var item = document.getElementsByClassName("item");
+    var modal = document.getElementsByClassName("modal");
+    var closeButton = document.getElementsByClassName("close");
 
-      <h2>Smoothie</h2>
-      <ul>
-        <li>Strawberry</li>
-        <li>Peach</li>
-        <li>Mango</li>
-        <li>Pineapple</li>
-        <li>Coconut</li>
-        <li>Taro</li>
-        <li>Honeydew</li>
-        <li>Mocha</li>
-        <li>Caramel</li>
-        <li>Yogurt</li>
-        <li>Multi-Grain (미숫가루)</li>
-        <li>Red Bean (팥)</li>
-      </ul>
+    for(var i=0; i<modal.length; i++){
 
-      <h2>Slush</h2>
-      <ul>
-        <li>Strawberry</li>
-        <li>Peach</li>
-        <li>Mango</li>
-        <li>Passion</li>
-        <li>Pomegranate</li>
-        <li>Pineapple</li>
-        <li>Lychee</li>
-        <li>Green Apple</li>
-        <li>Wintermelon</li>
-        <li>Grapefruit</li>
-        <li>Kiwi</li>
-        <li>Taro</li>
-        <li>Honeydew</li>
-      </ul>
+      if (item[i]){
+        item[i].onclick=function(){
+          for(var i=0; i<item.length; i++){
+            this.nextElementSibling.style.display="flex";
+          }
+        }
+      }
 
-      <h2>Milkshake</h2>
-      <ul>
-        <li>Strawberry</li>
-        <li>Vanilla</li>
-        <li>Chocolate</li>
-        <li>Matcha</li>
-        <li>Coffee</li>
-        <li>Oreo</li>
-      </ul>
+      closeButton[i].onclick=function(){
+        for(var i=0; i<modal.length; i++){
+          modal[i].style.display="none";
+        }
+      }
 
-      <h2>Milk Tea</h2>
-      <ul>
-        <li>Signature</li>
-        <li>Jasmine</li>
-        <li>Taro</li>
-        <li>Thai</li>
-        <li>Eclipse</li>
-        <li>Almond</li>
-        <li>Mocha</li>
-        <li>Hokkaido</li>
-        <li>Okinawa</li>
-      </ul>
+      modal[i].onclick=function(){
+        this.style.display="none";
+      }
+      modal[i].firstElementChild.onclick=function(event){
+        event.stopPropagation();
+      }
+    }
+    </script>
+    <script>
+    $(document).ready(function(){
+      var back_to_top=document.getElementById("back_to_top");
+      var drinks=document.getElementById("smoothie");
+      $(window).scroll(function(){
+        if($(window).scrollTop() >= drinks.getBoundingClientRect().top+500){
+          back_to_top.style.display="block";
+        }
+        else{
+          back_to_top.style.display="none";
+        }
+      })
+    })
+    </script>
 
-      <h2>Jasmine Tea</h2>
-      <ul>
-        <li>Regular</li>
-        <li>Plain (no sugar)</li>
-        <li>Strawberry</li>
-        <li>Kiwi</li>
-        <li>Mango</li>
-        <li>Green Apple</li>
-        <li>Pineapple</li>
-        <li>Peach</li>
-        <li>Lychee</li>
-        <li>Passion</li>
-        <li>Wintermelon</li>
-      </ul>
+    <script>
+    // Select all links with hashes
+    $('a[href*="#"]')
+      // Remove links that don't actually link to anything
+      .not('[href="#"]')
+      .not('[href="#0"]')
+      .click(function(event) {
+        // On-page links
+        if (
+          location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+          &&
+          location.hostname == this.hostname
+        ) {
+          // Figure out element to scroll to
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+          // Does a scroll target exist?
+          if (target.length) {
+            // Only prevent default if animation is actually gonna happen
+            event.preventDefault();
+            $('html, body').animate({
+              scrollTop: target.offset().top
+            }, 500, function() {
+              // Callback after animation
+              // Must change focus!
+              var $target = $(target);
+              $target.focus();
+              if ($target.is(":focus")) { // Checking if the target was focused
+                return false;
+              } else {
+                $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+                $target.focus(); // Set focus again
+              };
+            });
+          }
+        }
+      });
+    </script>
 
-      <h2>Toppings</h2>
-      <ul>
-        <li>Boba</li>
-        <li>Extra Boba</li>
-        <li>Crystal Boba</li>
-        <li>Egg Pudding</li>
-        <li>Grass Jelly</li>
-        <li>Lychee Coconut</li>
-        <li>Rainbow Jelly</li>
-        <li>Coffee Jelly</li>
-      </ul>
-
-      <h2>Foams</h2>
-      <ul>
-        <li>Tiramisu Foam</li>
-        <li>Cheese Foam</li>
-      </ul>
-
-      <h2>Waffle</h2>
-      <ul>
-        <li>Fruit Waffle</li>
-        <li>Banana-Nutella-Walnut Waffle</li>
-        <li>Red Bean & Walnut Waffle</li>
-        <li>Churro Waffle</li>
-      </ul>
-
-      <h2>Milk Snow</h2>
-      <ul>
-        <li>Fruit Snow</li>
-        <li>Strawberry Snow</li>
-        <li>Mango Snow</li>
-        <li>Oreo Snow</li>
-        <li>Ingeolmi (인절미) Snow</li>
-        <li>Black Sesame Snow</li>
-      </ul>
-
-      <h2>Acai & Pitaya</h2>
-      <ul>
-        <li>Acai Bowl</li>
-        <li>Acai Smoothie</li>
-        <li>Pitaya Bowl</li>
-        <li>Pitaya Smoothie</li>
-      </ul>
-
-
-    </div> -->
 
     {% include "homepage/footer.html" %}
   </body>

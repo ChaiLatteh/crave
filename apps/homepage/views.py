@@ -14,10 +14,10 @@ from .forms import MenuItemForm, MenuImageForm
 def home(request):
     return render(request, 'homepage/home.html')
 
-def menu(request):
-    return render(request, 'homepage/menu.html')
+def menu_images(request):
+    return render(request, 'homepage/menu_images.html')
 
-def menu_test(request):
+def menu(request):
 
     all_item_list=[]
     smoothie_list=[]
@@ -91,7 +91,7 @@ def menu_test(request):
 
     }
 
-    return render(request, 'homepage/menu_test.html', data)
+    return render(request, 'homepage/menu.html', data)
 
 def about_us(request):
     return render(request, 'homepage/about_us.html')
