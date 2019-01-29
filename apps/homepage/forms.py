@@ -27,9 +27,9 @@ menu_categories=[
 class MenuItemForm(forms.ModelForm):
 
     name=forms.CharField(label="Item Name *")
-    description=forms.CharField(label="Item Description *")
-    price=forms.CharField(label="Item Price *")
-    category=forms.ChoiceField(label="Item Category *", widget=forms.Select, choices=(menu_categories))
+    price=forms.CharField(label="Item Price", required=False)
+    # description=forms.CharField(label="Item Description", required=False)
+    category=forms.ChoiceField(label="Item Category", widget=forms.Select, choices=(menu_categories), required=False)
 
 
     # image=forms.ImageField(required=False)

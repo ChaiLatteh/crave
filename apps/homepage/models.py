@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from tinymce import models as tinymce_models
 from datetime import datetime, date
 import re, datetime, bcrypt
 EMAIL_REGEX=re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
@@ -35,12 +36,8 @@ class MenuItemManager(models.Manager):
         errors=[]
         this_item=data['this_item']
 
-        if data['category']=="":
-            errors.append("Please enter item category.")
         if data['name']=="":
             errors.append("Please enter item name.")
-        if data['price']=="":
-            errors.append("Please enter item price.")
 
         if len(errors)>0:
             return{
@@ -75,7 +72,7 @@ class MenuItem(models.Model):
     name=models.CharField(max_length=255)
     price=models.CharField(max_length=255)
     category=models.CharField(max_length=255)
-    description=models.CharField(max_length=255)
+    description=tinymce_models.HTMLField()
     image=models.ImageField(upload_to="menu_item_image", null=True, blank=False)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)

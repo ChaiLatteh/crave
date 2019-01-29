@@ -54,6 +54,7 @@
 
     .item{
       cursor:pointer;
+      height:85px;
       width:45%;
       padding:10px;
       margin-bottom:30px;
@@ -62,7 +63,7 @@
     .item:hover{
       box-shadow:0px 0px 6px 0px rgba(0,0,0,.25);
     }
-    #menu>div:nth-child(4n+4){
+    #menu>div>div:nth-child(4n+4){
       float:right;
     }
     .item_name{
@@ -100,7 +101,7 @@
       overflow-y:auto;
       width:80%;
       max-width:1150px;
-      min-height:fit-content;
+      /* min-height:fit-content; */
       height:60%;
       max-height:766px;
       background-color: #fefefe;
@@ -142,7 +143,6 @@
     #modal_image img{
       width:100%;
       max-width:300px;
-      box-shadow:4px 4px 4px -2px rgba(0,0,0,.5);
     }
 
     #modal_info{
@@ -181,18 +181,19 @@
         width:100%;
       }
 
+      #menu>div:nth-child(4n+4){
+        float:initial;
+      }
+
       .modal-content{
         height:initial;
-        min-height:initial;
+        max-height:80%;
       }
 
       #modal_image{
         display:table;
         width:100%;
         height:70%;
-      }
-      #modal_image img{
-        box-shadow:0px 4px 4px -2px rgba(0,0,0,.5);
       }
       #modal_info{
         display:table;
@@ -257,37 +258,547 @@
 
 
     <div id="menu" class="container-fluid">
-      {% for item in all_item_list %}
-        <div class="item">
-          <h3 class="item_name">{{item.name}}</h3>
-          <span class="item_price">${{item.price}}</span>
-        </div>
-        <div id="modal" class="modal">
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="modal_image">
-              <div style="display:table; margin:auto; height:100%;">
-                <div style="display:table-cell; vertical-align:middle;">
-                  {% if item.image %}
-                    <img src="{{item.image.url}}">
-                  {% else %}
-                    <img src="/static/images/no_image.jpg">
-                  {% endif %}
+      <div class="category" id="smoothie">
+        <h1>Smoothies</h1>
+        {% for item in smoothie_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            {% if item.price %}
+              <span class="item_price">${{item.price}}</span>
+            {% endif %}
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div id="modal_info">
-              <div style="display:table; margin:auto 0; height:100%;">
-                <div style="display:table-cell; vertical-align:middle;">
-                  <h3>{{item.name}}</h3>
-                  <h5>{{item.description}}</h5>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        {% endfor %}
+      </div>
 
-      {% endfor %}
+      <div class="category" id="special_smoothie">
+        <h1>Special Smoothie</h1>
+        {% for item in special_smoothie_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            {% if item.price %}
+              <span class="item_price">${{item.price}}</span>
+            {% endif %}
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+
+      <div class="category" id="slush">
+        <h1>Slush</h1>
+        {% for item in slush_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            {% if item.price %}
+              <span class="item_price">${{item.price}}</span>
+            {% endif %}
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="milk_tea">
+        <h1>Milk Tea</h1>
+        {% for item in milk_tea_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            {% if item.price %}
+              <span class="item_price">${{item.price}}</span>
+            {% endif %}
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="jasmine_tea">
+        <h1>Jasmine Green Tea</h1>
+        {% for item in jasmine_tea_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            {% if item.price %}
+              <span class="item_price">${{item.price}}</span>
+            {% endif %}
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="special_drink">
+        <h1>Special Tea</h1>
+        {% for item in special_drink_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            {% if item.price %}
+              <span class="item_price">${{item.price}}</span>
+            {% endif %}
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+
+      <div class="category" id="frappe">
+        <h1>Frappe</h1>
+        {% for item in frappe_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            {% if item.price %}
+              <span class="item_price">${{item.price}}</span>
+            {% endif %}
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="milkshake">
+        <h1>Milk Shake</h1>
+        {% for item in milkshake_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            {% if item.price %}
+              <span class="item_price">${{item.price}}</span>
+            {% endif %}
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="waffle">
+        <h1>Waffle</h1>
+        {% for item in waffle_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            {% if item.price %}
+              <span class="item_price">${{item.price}}</span>
+            {% endif %}
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="milk_snow">
+        <h1>Milk Snow</h1>
+        {% for item in milk_snow_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            {% if item.price %}
+              <span class="item_price">${{item.price}}</span>
+            {% endif %}
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="acai_pitaya">
+        <h1>Acai & Pitaya</h1>
+        {% for item in acai_pitaya_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            {% if item.price %}
+              <span class="item_price">${{item.price}}</span>
+            {% endif %}
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="cafe">
+        <h1>Cafe</h1>
+        {% for item in cafe_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            {% if item.price %}
+              <span class="item_price">${{item.price}}</span>
+            {% endif %}
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="hot_tea">
+        <h1>Hot Tea</h1>
+        {% for item in hot_tea_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            {% if item.price %}
+              <span class="item_price">${{item.price}}</span>
+            {% endif %}
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="taiyaki">
+        <h1>Taiyaki</h1>
+        {% for item in taiyaki_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            {% if item.price %}
+              <span class="item_price">${{item.price}}</span>
+            {% endif %}
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="category" id="ice_cream">
+        <h1>Ice Cream</h1>
+        {% for item in ice_cream_list %}
+          <div class="item">
+            <h3 class="item_name">{{item.name}}</h3>
+            {% if item.price %}
+              <span class="item_price">${{item.price}}</span>
+            {% endif %}
+          </div>
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modal_image">
+                <div style="display:table; margin:auto; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    {% if item.image %}
+                      <img src="{{item.image.url}}">
+                    {% else %}
+                      <img src="/static/images/no_image.jpg">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div id="modal_info">
+                <div style="display:table; margin:auto 0; height:100%;">
+                  <div style="display:table-cell; vertical-align:middle;">
+                    <h3>{{item.name}}</h3>
+                    <h5>{{item.description|safe}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
 
 
     </div>
