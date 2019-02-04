@@ -3,12 +3,12 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.home),
-    url(r'^menu$', views.menu),
-    url(r'^menu_images$', views.menu_images),
-    url(r'^about$', views.about_us),
-    url(r'^contact_us$', views.contact_us),
-    url(r'^careers$', views.careers),
+    url(r'^$', views.home, name="home"),
+    url(r'^menu$', views.menu, name="menu"),
+    url(r'^menu_images$', views.menu_images, name="menu_images"),
+    url(r'^about$', views.about_us, name="about_us"),
+    url(r'^contact_us$', views.contact_us, name="contact_us"),
+    url(r'^careers$', views.careers, name="careers"),
 
     url(r'^closing_soon$', views.closing_soon),
 
