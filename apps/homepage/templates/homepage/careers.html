@@ -29,14 +29,39 @@
     body{
       height:100%;
     }
+
+    #button_container{
+      text-align:center;
+      display:table;
+      margin:auto;
+      margin-top:50px;
+      margin-bottom:55px;
+
+    }
+    #button{
+      text-align:center;
+      font-size:16px;
+      color: #19528a;
+      background-color:white;
+      border:2px solid #19528a;
+      padding:5px 20px;
+      border-radius:0.25em;
+      transition: 0.5s;
+    }
+    #button:hover{
+      color:white;
+      background-color:#19528a;
+      transition:0.5s;
+    }
     </style>
   </head>
   <body>
     {% include "homepage/navbar.html" %}
     <div style="margin-bottom:500px;" class="container">
       <h1 style="text-align:center; font-weight:bold;">CAREERS</h1>
-      <h2 style="text-align:left; color:darkred;">Crave is currently not hiring.</h2>
-      <h2 style="text-align:left; margin-top:50px;">However, <a target="_blank" href="https://www.yelp.com/biz/bobatopia-anaheim-4">Bobatopia</a> is! Please call (909) 532-1707 for more information.</h2>
+      <h2 style="text-align:center; color:darkblue;">Crave is currently <span style="font-weight:bold;">scouting</span> for potential employees in future.</h2>
+      <a id="button_container" target="_blank" href="https://goo.gl/forms/89Pi0rT1YtJ0ODrC3"><button id="button">Apply Here</button></a>
+      <!-- <h2 style="text-align:left; margin-top:50px;">However, <a target="_blank" href="https://www.yelp.com/biz/bobatopia-anaheim-4">Bobatopia</a> is! Please call (909) 532-1707 for more information.</h2> -->
     </div>
     {% include "homepage/footer.html" %}
   </body>
