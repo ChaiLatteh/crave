@@ -196,13 +196,29 @@
     var slides = document.getElementsByClassName("slides");
     var slideIndex = 1;
     var myIndex = 0;
-    setTimeout(carousel,5000);
+    var slideshow = setInterval(carousel,5000);
 
+    function carousel(){
+      var i;
+      var x = slides;
+      for (i = 0; i < x.length; i++) {
+         x[i].style.display = "none";
+      }
+      myIndex++;
+      if (myIndex > x.length){
+        myIndex = 1;
+      }
+      x[myIndex-1].style.display = "inline-table";
+      plusSlides(1);
+    }
 
 
     function plusSlides(n){
       showSlides(slideIndex+=n);
+      clearInterval(slideshow);
+      slideshow = setInterval(carousel,5000);
     }
+
     function showSlides(n){
       if (n>slides.length){
         slideIndex = 1;
@@ -223,20 +239,6 @@
 
 
 
-    function carousel(){
-        var i;
-        var x = slides;
-        for (i = 0; i < x.length; i++) {
-           x[i].style.display = "none";
-        }
-        myIndex++;
-        if (myIndex > x.length){
-          myIndex = 1;
-        }
-        x[myIndex-1].style.display = "inline-table";
-        plusSlides(1);
-        setTimeout(carousel, 5000)
-      }
     </script>
 
   </body>
